@@ -1,5 +1,6 @@
 local Player = {}
 
+
 function Player.init()
     Player.x = 2
     Player.y = 2
@@ -12,11 +13,12 @@ end
 
 function Player.draw()
     love.graphics.setColor(Color.GOLD)
-    love.graphics.print("P", ((Player.x - 1) * TILE_SIZE) + DECAL_X, ((Player.y - 1) * TILE_SIZE) + DECAL_Y)
+    love.graphics.print(Player.image, ((Player.x - 1) * TILE_SIZE) + DECAL_X, ((Player.y - 1) * TILE_SIZE) + DECAL_Y)
 end
 
 function Player.keypressed(key)
 
+     
 end
 
 return Player
