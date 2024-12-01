@@ -12,6 +12,7 @@ function UI.draw()
     love.graphics.print("INT   : "..player.int, 1050, 180)
     love.graphics.print("SAG   : "..player.sag, 1050, 210)
     love.graphics.print("CHAR  : "..player.char, 1050, 240)
+    love.graphics.print("GOLD  : "..player.gold, 1050, 270)
 
 end
 
