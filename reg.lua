@@ -28,6 +28,13 @@ Color = {
     RAYWHITE   = { 245, 245, 245, 255 },
 }
 
+STATE = {
+    REPOS = 1,
+    EXPLORE = 2,
+    CITY = 3,
+
+}
+
 
 TILE_SIZE = 32
 

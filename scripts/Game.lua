@@ -4,7 +4,7 @@ map = require("assets.maps.map_01")
 city = require("scripts.City")
 ui = require("scripts.UI")
 repos = require("scripts.Repos")
-state = "explore"
+state = STATE.EXPLORE
 
 
 function Game.load()
@@ -18,23 +18,24 @@ function Game.update(dt)
 end
 
 function Game.draw()
-    if state == "explore" then
+    if state == STATE.EXPLORE then
         map.draw()
         player.draw()
-    elseif state == "city" then
+    elseif state == STATE.CITY then
         city.draw()
-    elseif state == "repos" then
+    elseif state == STATE.REPOS then
         repos.draw()
     end
     ui.draw()
 end
 
 function Game.keypressed(key)
-    if state == "explore" then
+    if state == STATE.EXPLORE then
         player.keypressed(key)
-    elseif state == "city" then
+        monster = math.random(1, 6)
+    elseif state == STATE.CITY then
         city.keypressed(key)
-    elseif state == "repos" then
+    elseif state == STATE.REPOS then
         repos.keypressed(key)
     end
 end

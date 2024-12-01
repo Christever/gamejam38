@@ -14,10 +14,10 @@ end
 
 function City.keypressed(key)
     if key == "1" then
-        state = "repos"
+        state = STATE.REPOS
     end
     if key == "backspace"then
-        state = "explore"
+        state = STATE.EXPLORE
     end
 end
 

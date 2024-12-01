@@ -15,7 +15,7 @@ function Player.init()
 end
 
 function Player.update(dt)
-    if state == "repos" then
+    if state == STATE.REPOS then
         Player.const = Player.const + dt
         if Player.const > 100 then
             Player.const = 100
@@ -29,7 +29,7 @@ function Player.draw()
 end
 
 function Player.keypressed(key)
-    if state == "explore" then
+    if state == STATE.EXPLORE then
         local newX, newY = player.x, player.y
         if key == "up" then
             newY = player.y - 1
@@ -52,7 +52,7 @@ function Player.keypressed(key)
             elseif id == "M" then -- Montagne
                 player.const = player.const - 5
             elseif id == "C" then
-                state = "city"
+                state = STATE.CITY
             end
             if player.const > 0 then
                 player.x, player.y = newX, newY

@@ -7,7 +7,7 @@ end
 
 function Repos.keypressed(key)
     if key == "backspace" then
-        state = "city"
+        state = STATE.CITY
     end
 end
 
