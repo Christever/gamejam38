@@ -4,6 +4,9 @@ local map
 local font
 player = require("scripts.Player")
 map = require("assets.maps.map_01")
+city = require("scripts.City")
+ui = require("scripts.UI")
+local state = ""
 
 
 function Game.load()
@@ -14,12 +17,18 @@ function Game.load()
 end
 
 function Game.update(dt)
-    player.update(dt)
+
 end
 
 function Game.draw()
-    map.draw()
-    player.draw()
+   
+    if state == "" then
+        map.draw()
+        player.draw()
+        ui.draw()
+    elseif state=="city" then
+        city.draw()
+    end
 end
 
 function Game.keypressed(key)
@@ -38,9 +47,22 @@ function Game.keypressed(key)
     end
 
     local id = map.currentLevel[newY]:sub(newX, newX)
-
-    if id == "."  or id =="F" then
-        player.x, player.y = newX, newY
+    print(id)
+    if id == "." or id == "F" or id == "M" or id=="C" then
+        if id == "." then     -- Degagé
+            player.const = player.const - 1
+        elseif id == "F" then -- Forêt
+            player.const = player.const - 2
+        elseif id == "M" then -- Montagne
+            player.const = player.const - 5
+        elseif id == "C" then
+            state = "city"
+        end
+        if player.const > 0 then
+            player.x, player.y = newX, newY
+        else
+            player.const = 0
+        end
     end
 end
 
