@@ -6,7 +6,7 @@ end
 
 function UI.draw()
     love.graphics.print("PLAYER", 1100,50)
-    love.graphics.print("CONST : "..player.const, 1050, 90)
+    love.graphics.print("CONST : "..math.floor(player.const), 1050, 90)
     love.graphics.print("FORCE : "..player.strenght, 1050, 120)
     love.graphics.print("DEXT  : "..player.dext, 1050, 150)
     love.graphics.print("INT   : "..player.int, 1050, 180)

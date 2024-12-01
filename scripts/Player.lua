@@ -9,12 +9,14 @@ function Player.init()
     Player.const    = 100
     Player.dext     = 100
     Player.int      = 100
-    player.sag      = 100
-    player.char     = 100
+    Player.sag      = 100
+    Player.char     = 100
 end
 
 function Player.update(dt)
-
+    if Player.const > 100 then
+        Player.const = 100
+    end
 end
 
 function Player.draw()

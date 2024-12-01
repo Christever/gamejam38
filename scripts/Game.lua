@@ -1,7 +1,7 @@
 local Game = {}
 
 local map
-local font
+
 player = require("scripts.Player")
 map = require("assets.maps.map_01")
 city = require("scripts.City")
@@ -11,24 +11,29 @@ local state = ""
 
 function Game.load()
     love.graphics.setFont(font_xl)
-
     map.init()
     player.init()
 end
 
 function Game.update(dt)
+    if state == "city" then
+        player.const = player.const + dt
+    end
+    if love.keyboard.isDown("escape") and state=="city" then
+        state = ""
+    end
+    player.update(dt)
 
 end
 
 function Game.draw()
-   
     if state == "" then
         map.draw()
         player.draw()
-        ui.draw()
-    elseif state=="city" then
+    elseif state == "city" then
         city.draw()
     end
+    ui.draw()
 end
 
 function Game.keypressed(key)
@@ -46,9 +51,10 @@ function Game.keypressed(key)
         newX = player.x + 1
     end
 
+    
+
     local id = map.currentLevel[newY]:sub(newX, newX)
-    print(id)
-    if id == "." or id == "F" or id == "M" or id=="C" then
+    if id == "." or id == "F" or id == "M" or id == "C" then
         if id == "." then     -- Degagé
             player.const = player.const - 1
         elseif id == "F" then -- Forêt
