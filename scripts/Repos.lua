@@ -6,7 +6,7 @@ function Repos.draw()
 end
 
 function Repos.keypressed(key)
-    if key == "escape" then
+    if key == "backspace" then
         state = "city"
     end
 end

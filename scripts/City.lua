@@ -16,7 +16,7 @@ function City.keypressed(key)
     if key == "1" then
         state = "repos"
     end
-    if key == "escape"then
+    if key == "backspace"then
         state = "explore"
     end
 end
