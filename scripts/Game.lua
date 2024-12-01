@@ -7,8 +7,8 @@ local map = require("assets.maps.map_01")
 
 
 function Game.load()
-    font = love.graphics.newFont("assets/fonts/monospace.ttf", 32)
-    love.graphics.setFont(font)
+    love.graphics.setFont(font_xl)
+
     map.init()
     player.init()
 end
