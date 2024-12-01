@@ -14,6 +14,7 @@ function Player.init()
 end
 
 function Player.update(dt)
+    Player.const = Player.const + dt
     if Player.const > 100 then
         Player.const = 100
     end
