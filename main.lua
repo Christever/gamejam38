@@ -24,7 +24,7 @@ local player           = {
     y = 2,
     force = 40,
     attack = 10,
-    const = 30,
+    const = 80,
     gold = 0
 }
 local explored         = {}
@@ -90,13 +90,13 @@ function love.draw()
     end
     --#endregion
     love.graphics.setColor(Color.WHITE)
-    love.graphics.line(0, 500, 1400, 500)
 
     drawUI()
 end
 
 function love.keypressed(key)
     local newX, newY = player.x, player.y
+    local newConst = player.const
     if key == "up" then
         newY = newY - 1
     elseif key == "down" then
@@ -110,13 +110,16 @@ function love.keypressed(key)
     local id = map[newY]:sub(newX, newX)
     if id == " " or id == "C" or id == "M" or id == "F" then
         if id == "M" then
-            player.const = player.const - 3
+            newConst = newConst - 3
         elseif id == "F" then
-            player.const = player.const - 2
+            newConst = newConst - 2
         else
-            player.const = player.const - 1
+            newConst = newConst - 1
         end
-        player.x, player.y = newX, newY
+        if newConst > 0 then
+            player.x, player.y = newX, newY
+            player.const = newConst
+        end
     end
 
     for y = 1, mapHeight do
@@ -128,11 +131,21 @@ function love.keypressed(key)
     end
 end
 
+function popMonster()
+
+end
+
 function drawUI()
+    love.graphics.line(0, 500, 1400, 500)
     love.graphics.print("JOUEUR", 50, 520)
     love.graphics.setFont(font_medium)
     love.graphics.print("Force   : " .. player.force, 50, 560)
     love.graphics.print("Attaque : " .. player.attack, 50, 580)
     love.graphics.print("Const   : " .. player.const, 50, 600)
     love.graphics.print("Or      : " .. player.gold, 50, 620)
+    love.graphics.line(0, 680, 1400, 680)
+
+    if player.const <= 1 then
+        love.graphics.print("Vous êtes epuisé. Vous devez vous reposez...", 50, 700)
+    end
 end
