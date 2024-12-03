@@ -1,4 +1,4 @@
-Color    = {
+Color       = {
     LIGHTGRAY   = { 200, 200, 200, 255 },
     GRAY        = { 130, 130, 130, 255 },
     DARKGRAY    = { 80, 80, 80, 255 },
@@ -30,4 +30,8 @@ Color    = {
     RAYWHITE    = { 245, 245, 245, 255 },
 }
 
-TILESIZE = 32
+TILESIZE    = 32
+
+font_small  = love.graphics.newFont("fonts/Monospace.ttf", 16)
+font_medium = love.graphics.newFont("fonts/Monospace.ttf", 24)
+font_xl     = love.graphics.newFont("fonts/Monospace.ttf", 32)
