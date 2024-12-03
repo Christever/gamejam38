@@ -4,7 +4,7 @@ local Map = {}
 
 
 function Map.init()
-    Map.level  = {
+    Map.level    = {
         "##############################",
         "#     FFFF    M       C      #",
         "#   C  FFF    M              #",
@@ -22,8 +22,8 @@ function Map.init()
         "##############################"
     }
 
-    Map.width  = #Map.level[1]
-    Map.height = #Map.level
+    Map.width    = #Map.level[1]
+    Map.height   = #Map.level
 
     Map.explored = {}
     for y = 1, Map.height do
@@ -34,10 +34,9 @@ function Map.init()
     end
 end
 
-
 function Map.draw()
     local oldFont = love.graphics.getFont()
-    local r,g,b,a  = love.graphics.getColor()
+    local r, g, b, a = love.graphics.getColor()
 
     love.graphics.setFont(font_xl)
     love.graphics.setColor(Color.WHITE)
@@ -67,13 +66,21 @@ function Map.draw()
         end
     end
     love.graphics.setFont(oldFont)
-    love.graphics.setColor(r,g,b,a)
-  
+    love.graphics.setColor(r, g, b, a)
 end
 
-function Map.brouillard()
+function Map.getTile(pX, pY)
+    return Map.level[pY]:sub(pX, pX)
+end
 
-    
+function Map.setExplored()
+    for y = 1, Map.height do
+        for x = 1, Map.width do
+            if isVisible(x, y) then
+                Map.explored[y][x] = true
+            end
+        end
+    end
 end
 
 return Map

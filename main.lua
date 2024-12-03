@@ -31,19 +31,11 @@ function love.draw()
 end
 
 function love.keypressed(key)
-    local newX, newY = player.x, player.y
+  
     local newConst = player.const
-    if key == "up" then
-        newY = newY - 1
-    elseif key == "down" then
-        newY = newY + 1
-    elseif key == "left" then
-        newX = newX - 1
-    elseif key == "right" then
-        newX = newX + 1
-    end
-
-    local id = map.level[newY]:sub(newX, newX)
+    local newX, newY = player.keypressed(key)
+    local id = map.getTile(newX, newY)
+    
     if id == " " or id == "C" or id == "M" or id == "F" then
         if id == "M" then
             newConst = newConst - 3

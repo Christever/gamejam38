@@ -18,5 +18,18 @@ function Player.draw()
     love.graphics.setFont(oldFont)
 end
 
+function Player.keypressed(key)
+    local newX, newY = Player.x, Player.y
+    if key == "up" then
+        newY = newY - 1
+    elseif key == "down" then
+        newY = newY + 1
+    elseif key == "left" then
+        newX = newX - 1
+    elseif key == "right" then
+        newX = newX + 1
+    end
+    return newX, newY
+end
 
 return Player
