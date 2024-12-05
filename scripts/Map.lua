@@ -55,7 +55,7 @@ function Map.draw()
     love.graphics.setColor(Color.DARKBLACK)
     for y = 1, Map.height do
         for x = 1, Map.width do
-            if not isVisible(x, y) then
+            if not isVisible(x, y, player.x, player.y, 3) then
                 if Map.explored[y][x] then
                     love.graphics.setColor(Color.MEDIUMBLACK)
                 else

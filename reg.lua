@@ -35,3 +35,27 @@ TILESIZE    = 32
 font_small  = love.graphics.newFont("fonts/Monospace.ttf", 16)
 font_medium = love.graphics.newFont("fonts/Monospace.ttf", 24)
 font_xl     = love.graphics.newFont("fonts/Monospace.ttf", 32)
+
+
+-- Monsters
+monsterList = {
+    {
+        name = "Araignée Géante",
+        genre = "Une ", 
+        force = math.random(3,5),
+        attack = math.random(2,4),
+        armure = math.random(2,4)
+    },
+    {
+        name = "Gobelin",
+        genre = "Un ",
+        force = math.random(4,8),
+        attack = math.random(4,9),
+        armure = math.random(2,6)
+    }
+}
+
+
+-- Utils
+
+require("utils")

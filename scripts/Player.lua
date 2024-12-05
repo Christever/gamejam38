@@ -6,6 +6,7 @@ function Player.init()
     Player.y = 2
     Player.force = 40
     Player.attack = 10
+    Player.armure = 15
     Player.const = 80
     Player.gold = 0
 end
