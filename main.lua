@@ -34,22 +34,12 @@ function love.keypressed(key)
         local newX, newY = player.keypressed(key)
         local id = map.getTile(newX, newY)
 
-        if id == " " or id == "C" or id == "M" or id == "F" then
-            if id == "M" then
-                newConst = newConst - 3
-            elseif id == "F" then
-                newConst = newConst - 2
-            else
-                newConst = newConst - 1
-            end
-            if newConst > 0 then
-                player.x, player.y = newX, newY
-                player.const = newConst
-                local d = dice.lance(20)
-                if d > 12 then
-                    rencontre()
-                end
-            end
+        if id == " " then
+            player.x, player.y = newX, newY
+            -- local d = dice.lance(20)
+            -- if d > 12 then
+            --     rencontre()
+            -- end
         end
 
         for y = 1, map.height do
@@ -66,8 +56,6 @@ function love.keypressed(key)
         state = "fuite"
     end
 end
-
-
 
 function rencontre()
     monstre = monsterList[math.random(1, #monsterList)]
@@ -97,8 +85,8 @@ function drawUI()
         love.graphics.print("Armure  : " .. monstre.armure, 500, 600)
         goCombat()
     elseif state == "fuite" then
-        love.graphics.print("Vous fuyez comme un lache...",50, 720)
-        love.graphics.print("Cela vous coute 3 points d'endurance...",50, 750)
+        love.graphics.print("Vous fuyez comme un lache...", 50, 720)
+        love.graphics.print("Cela vous coute 3 points d'endurance...", 50, 750)
         state = "explore"
     end
 
