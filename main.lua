@@ -14,7 +14,7 @@ state                  = "explore"
 
 function love.load()
     love.window.setMode(1400, 900)
-    map.init()
+    map.init(1)
     player.init()
     dice.init()
 end

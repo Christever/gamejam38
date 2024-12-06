@@ -2,25 +2,28 @@ local Map = {}
 
 
 
-
-function Map.init()
-    Map.level    = {
-        "##############################",
-        "#     FFFF    M       C      #",
-        "#   C  FFF    M              #",
-        "##   FFFFF  FFFF             #",
-        "#   FFFFFF  FFFF             #",
-        "#  FFFFFFFFFFFFF             #",
-        "#                            #",
-        "#        WWWWW               #",
-        "#       WWWWWW          C    #",
-        "#       WWWWWWWW             #",
-        "#        WWWWWW              #",
-        "#         WWW                #",
-        "#                            #",
-        "#   C                        #",
-        "##############################"
-    }
+---Initialisation de la map
+---@param pLevel number (Niveau)
+function Map.init(pLevel)
+    local level = require("maps.levels")
+    Map.level = level[pLevel]
+    -- Map.level    = {
+    --     "##############################",
+    --     "#     FFFF    M       C      #",
+    --     "#   C  FFF    M              #",
+    --     "##   FFFFF  FFFF             #",
+    --     "#   FFFFFF  FFFF             #",
+    --     "#  FFFFFFFFFFFFF             #",
+    --     "#                            #",
+    --     "#        WWWWW               #",
+    --     "#       WWWWWW          C    #",
+    --     "#       WWWWWWWW             #",
+    --     "#        WWWWWW              #",
+    --     "#         WWW                #",
+    --     "#                            #",
+    --     "#   C                        #",
+    --     "##############################"
+    -- }
 
     Map.width    = #Map.level[1]
     Map.height   = #Map.level
